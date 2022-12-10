@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:8
+    hostname: mysql.example.com
+    environment:
+      MYSQL_ROOT_PASSWORD: "12345678"
+    ports: 
+      - "3306:3306"
+    expose:
+      - 3306
+    volumes:
+      - "$HOME/docker/var/lib/mysql:/var/lib/mysql"
