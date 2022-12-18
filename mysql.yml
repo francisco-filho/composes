@@ -13,9 +13,9 @@ services:
     volumes:
       - "$HOME/docker/var/lib/mysql:/var/lib/mysql"
     networks:
-      - mysql8
+      - dockernet
 networks:
-  mysql8:
+  dockernet:
     driver: bridge
     ipam:
       config:
