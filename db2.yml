@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  db2:
+    container_name: db2
+    image: ibmcom/db2:11.5.8.0
+    hostname: db2.example.com
+    privileged: true
+    ipc: host
+    environment:
+      LICENSE: accept
+      DB2INST1_PASSWORD: "12345678"
+      DBNAME: testdb
+    #https://solace.community/discussion/929/docker-port-55555-not-available-on-windows
+    ports: 
+      - "50000:50000"
+    expose:
+      - 50000
+    volumes:
+      - "$HOME/docker/var/lib/db2:/database"
+    networks:
+      - dockernet
+networks:
+  dockernet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.203.192/27

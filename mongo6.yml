@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  mongodb:
+    container_name: mongo
+    image: mongo:6.0.3
+    network_mode: host
+    environment:
+      # disponivel no db 'admin'
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 12345678
+    volumes:
+      - "$HOME/docker/var/mongodb:/data/db"
+    ports:
+      - 27017:27017
